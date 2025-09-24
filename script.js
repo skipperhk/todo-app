@@ -1,4 +1,5 @@
 const taskInput = document.getElementById("taskInput");
+const dateInput = document.getElementById("dateInput");
 const addTaskBtn = document.getElementById("add-button");
 const taskList = document.getElementById("task-list");
 
@@ -15,11 +16,12 @@ function addTask() {
     alert("please enter a task!");
     return;
   }
-  
+  // Create a new task object
   const newTask = {
     id: Date.now(),
     text: taskText,
-    completed: false
+    completed: false,
+    dueDate: null
   };
 
   // Add task to the task array
