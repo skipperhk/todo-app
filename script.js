@@ -9,6 +9,7 @@ let tasks = [];
 // Function to add new task
 function addTask() {
   const taskText = taskInput.value;
+  const taskDate = dateInput.value;
   console.log("User typed:", taskText);
 
   // stops from adding empty tasks
@@ -21,7 +22,7 @@ function addTask() {
     id: Date.now(),
     text: taskText,
     completed: false,
-    dueDate: null
+    dueDate: taskDate || null
   };
 
   // Add task to the task array
@@ -29,22 +30,45 @@ function addTask() {
 
   // Clears input box after task is added
   taskInput.value = "";
+  dateInput.value = "";
 
   // Displays all task
   displayTasks();
 }
 
 function displayTasks() {
+  console.log("displayTasks function called!")
+  console.log("current task:", tasks);
   taskList.innerHTML = "";
 
   tasks.forEach(function(task) {
     const taskElement = document.createElement("div");
-
     taskElement.className = task.completed ? "task-item completed" : "task-item";
+
+    // Calculate if task is due or overdue
+    let dueDateClass = "";
+    let dueDateText = "";
+    if (task.dueDate) {
+      const today = new Date();
+      const dueDate = new Date(task.dueDate);
+      const timeDiff = dueDate - today;
+      const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+      if (daysDiff < 0) {
+        dueDateClass = "overdue";
+        dueDateText = `Due: ${task.dueDate} (Overdue!)`;
+      } else if (daysDiff <= 2) {
+        dueDateClass = "due-soon";
+        dueDateText = `Due: ${task.dueDate} (Soon!)`;
+      } else {
+        dueDateText = `Due: ${task.dueDate}`;
+      }
+    }
 
     taskElement.innerHTML = `
     <input type="checkbox" ${task.completed ? "checked" : ""} onchange="toggleComplete(${task.id})">
     <span class="task-text ${task.completed ? "completed" : ""}">${task.text}</span>
+    <span class="due-date ${dueDateClass}">${dueDateText}</span>
     <button onclick="editTask(${task.id})">Edit</button>
     <button onclick="deleteTask(${task.id})">Delete</button>
     `;
