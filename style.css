@@ -1,0 +1,39 @@
+body {
+  font-family: sans-serif;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+input {
+  padding: 10px;
+  width: 70%;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  background-color: rgb(6, 99, 6);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.task-text.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+  color: gray;
+}
+
+.task-item {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
