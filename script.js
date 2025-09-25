@@ -1,4 +1,5 @@
 const taskInput = document.getElementById("taskInput");
+const categorySelect = document.getElementById("categorySelect");
 const dateInput = document.getElementById("dateInput");
 const addTaskBtn = document.getElementById("add-button");
 const taskList = document.getElementById("task-list");
@@ -9,6 +10,7 @@ let tasks = [];
 // Function to add new task
 function addTask() {
   const taskText = taskInput.value;
+  const taskCategory = categorySelect.value;
   const taskDate = dateInput.value;
   console.log("User typed:", taskText);
 
@@ -22,6 +24,7 @@ function addTask() {
     id: Date.now(),
     text: taskText,
     completed: false,
+    category: taskCategory,
     dueDate: taskDate || null
   };
 
@@ -30,6 +33,7 @@ function addTask() {
 
   // Clears input box after task is added
   taskInput.value = "";
+  categorySelect.value = "";
   dateInput.value = "";
 
   // Displays all task
@@ -41,7 +45,16 @@ function displayTasks() {
   console.log("current task:", tasks);
   taskList.innerHTML = "";
 
-  tasks.forEach(function(task) {
+  let filteredTasks = tasks;
+  if (currentFilter !=="all") {
+    if (currentFilter === "none") {
+      filteredTasks = tasks.filter(task => !task.category || task.category === "");
+    } else {
+      filteredTasks = tasks.filter(task => task.category === currentFilter);
+    }
+  }
+
+  filteredTasks.forEach(function(task) {
     const taskElement = document.createElement("div");
     taskElement.className = task.completed ? "task-item completed" : "task-item";
 
@@ -68,6 +81,7 @@ function displayTasks() {
     taskElement.innerHTML = `
     <input type="checkbox" ${task.completed ? "checked" : ""} onchange="toggleComplete(${task.id})">
     <span class="task-text ${task.completed ? "completed" : ""}">${task.text}</span>
+    <span class="category-tag ${task.category ? 'category-' + task.category : ""}">${task.category ? task.category.charAt(0).toUpperCase() + task.category.slice(1) : ""}</span>
     <span class="due-date ${dueDateClass}">${dueDateText}</span>
     <button onclick="editTask(${task.id})">Edit</button>
     <button onclick="deleteTask(${task.id})">Delete</button>
@@ -109,6 +123,17 @@ function editTask(taskId) {
       displayTasks();
     }
   }
+}
+
+let currentFilter = "all";
+
+function filterTasks(filterType) {
+  currentFilter = filterType;
+  const allButtons = document.querySelectorAll(".filter-btn");
+  allButtons.forEach(btn => btn.classList.remove("active"));
+
+  event.target.classList.add("active");
+  displayTasks();
 }
 
 addTaskBtn.addEventListener("click", addTask)

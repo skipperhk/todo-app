@@ -19,10 +19,11 @@ button {
   padding: 10px 15px;
   font-size: 16px;
   border: none;
-  background-color: rgb(6, 99, 6);
+  background-color: rgb(7, 83, 7);
   color: #fff;
   cursor: pointer;
   border-radius: 5px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .task-text.completed {
@@ -53,4 +54,67 @@ button {
 .overdue {
   color: red;
   font-weight: bold;
+}
+
+.category-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  margin: 0 5px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.category-work {
+  background-color: #06588e;
+  color: white;
+}
+
+.category-personal {
+  background-color: #16773e;
+  color: white;
+}
+
+.category-home {
+  background-color: #a81f10;
+  color: white;
+}
+
+.category-study {
+  background-color: #70268d;
+  color: white;
+}
+
+.category-health {
+  background-color: #ba5c0a;
+  color: white;
+}
+
+.category-shopping {
+  background-color: #d0850b;
+  color: white;
+}
+
+#filter-buttons {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.filter-btn {
+  padding: 8px 15px;
+  margin: 3px;
+  border: 1px solid #ddd;
+  background-color: #f8f9fa;
+  color: #333;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.filter-btn:hover {
+  background-color: #092a4d;
+  color: white;
+  border-color: #047cfd;
+  transition: 0.3s;
 }
