@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GIFT | To-Do-List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>To Do List</h1>
+  <div class="input-container">
+    <input type="text" id="taskInput" placeholder="Enter a new task...">
+    <div class="input-row">
+      <select id="categorySelect">
+        <option value="">No Category</option>
+        <option value="work">Work</option>
+        <option value="personal">Personal</option>
+        <option value="home">Home</option>
+        <option value="study">Study</option>
+        <option value="health">Health</option>
+        <option value="shopping">Shopping</option>
+      </select>
+      <select id="prioritySelect">
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+        <option value="low">Low</option>
+      </select>
+            <select id="reminderSelect">
+            <option value="">No Reminder</option>
+            <option value="15">15 minutes before</option>
+            <option value="60">1 hour before</option>
+            <option value="1440">1 day before</option>
+            <option value="2880">2 days before</option>
+        </select>
+    </div>
+    <div>
+      <input type="date" id="dateInput">
+      <button id="add-button">Add Task</button>
+    </div>
+  </div>
+
+  <div id="filter-buttons">
+    <button class="filter-btn active" onclick="filterTasks('all')">All</button>
+    <button class="filter-btn" onclick="filterTasks('work')">Work</button>
+    <button class="filter-btn" onclick="filterTasks('personal')">Personal</button>
+    <button class="filter-btn" onclick="filterTasks('home')">Home</button>
+    <button class="filter-btn" onclick="filterTasks('study')">Study</button>
+    <button class="filter-btn" onclick="filterTasks('health')">Health</button>
+    <button class="filter-btn" onclick="filterTasks('shopping')">Shopping</button>
+    <button class="filter-btn" onclick="filterTasks('none')">No Category</button>
+</div>
+
+  <div id="task-list">
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
