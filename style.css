@@ -167,6 +167,21 @@ button {
   transition: 0.3s;
 }
 
+.task-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.task-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
 .priority-indicator {
   display: inline-block;
   padding: 2px 6px;

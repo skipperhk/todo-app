@@ -132,14 +132,18 @@ function displayTasks() {
     }
 
     taskElement.innerHTML = `
-    <input type="checkbox" ${task.completed ? "checked" : ""} onchange="toggleComplete(${task.id})">
-    <span class="priority-indicator priority-${task.priority}">${task.priority === "high" ? "❗" : task.priority === "low" ? "⬇" : "⏺"}</span>
-    <span class="task-text ${task.completed ? "completed" : ""}">${task.text}</span>
+    <div class="task-header">
+      <input type="checkbox" ${task.completed ? "checked" : ""} onchange="toggleComplete(${task.id})">
+      <span class="priority-indicator priority-${task.priority}">${task.priority === "high" ? "❗" : task.priority === "low" ? "⬇" : "⏺"}</span>
+      <span class="task-text ${task.completed ? "completed" : ""}">${task.text}</span>
+    </div>
     ${task.reminder ? '<span class="reminder-icon" title="Reminder set">🔔</span>' : ''}
     <span class="category-tag ${task.category ? 'category-' + task.category : ""}">${task.category ? task.category.charAt(0).toUpperCase() + task.category.slice(1) : ""}</span>
     <span class="due-date ${dueDateClass}">${dueDateText}</span>
-    <button onclick="editTask(${task.id})">Edit</button>
-    <button onclick="deleteTask(${task.id})">Delete</button>
+    <div class="task-buttons">
+      <button class="edit-btn" onclick="editTask(${task.id})">Edit</button>
+      <button class="delete-btn" onclick="deleteTask(${task.id})">Delete</button>
+    </div>
     `;
     taskList.appendChild(taskElement);
   });
