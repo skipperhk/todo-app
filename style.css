@@ -1,9 +1,18 @@
 body {
-  font-family: sans-serif;
+  font-family: playfair display, serif;
+  background-color: #b1daf3;
+  background: cover;
   max-width: 600px;
   margin: 50px auto;
   padding: 20px;
   place-content: center;
+}
+
+h1 {
+  font-family: playfair display, serif;
+  font-weight: lighter;
+  color: #161616;
+  margin-bottom: 50px;
 }
 
 h1 {
