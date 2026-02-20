@@ -170,16 +170,27 @@ button {
 .task-buttons {
   display: flex;
   flex-direction: row;
+  align-items: flex-end;
   gap: 10px;
-  justify-content: flex-end;
   margin-top: 10px;
 }
 
 .task-header {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 10px;
-  width: 100%;
+  width: auto;
+  justify-content: flex-start;
+}
+
+.task-header input[type="checkbox"] {
+  margin: 0;
+}
+
+.task-text {
+  margin: 0;
+  text-align: left;
 }
 
 .priority-indicator {
